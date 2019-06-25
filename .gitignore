@@ -1,0 +1,13 @@
+# Ignore Everything
+/*
+
+# Include Git Stuff
+!.gitignore
+!.gitmodules
+
+# Include Vim Stuff
+!.vimrc
+!.vim/
+
+# Include Tmux Stuff
+!.tmux.conf
