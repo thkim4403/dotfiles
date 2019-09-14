@@ -12,4 +12,7 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 
 set background=dark
+
+map <leader>nt :NERDTreeToggle<return>
+
 colorscheme gruvbox
