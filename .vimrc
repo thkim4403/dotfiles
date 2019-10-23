@@ -18,3 +18,5 @@ map <leader>gt :YcmCompleter GoToDefinition<return>
 map <leader>tb :TagbarToggle<return>
 
 colorscheme gruvbox
+
+set cc=80
