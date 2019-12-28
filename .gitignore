@@ -11,3 +11,6 @@
 
 # Include Tmux Stuff
 !.tmux.conf
+
+# Include Scripts
+!scripts/
