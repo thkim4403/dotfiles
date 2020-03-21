@@ -15,5 +15,5 @@
 # Include Scripts
 !scripts/
 
-# Include omzsh
-!.oh-my-zsh/
+# Include 
+!.ssh/config
