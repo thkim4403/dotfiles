@@ -17,3 +17,6 @@
 
 # Include 
 !.ssh/config
+
+# Include texmf
+!texmf/

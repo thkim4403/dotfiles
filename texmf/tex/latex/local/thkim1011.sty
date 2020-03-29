@@ -1,0 +1,205 @@
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{thkim1011}
+% Packages
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{fancyhdr}
+\RequirePackage{amsthm}
+\RequirePackage{listings}
+\RequirePackage{courier}
+\RequirePackage{hyperref}
+\RequirePackage{tcolorbox}
+\RequirePackage{tikz-cd}
+\RequirePackage[ruled, vlined]{algorithm2e}
+\RequirePackage{float}
+
+% Listings
+\lstset{
+    basicstyle=\ttfamily,
+    numbers=left,
+    xleftmargin=2em,
+    framexleftmargin=1.5em
+}
+
+% Some Stuff
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}} 
+
+\renewcommand{\phi}{\varphi}
+\newcommand{\tle}{\trianglelefteq}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\U}{\mathcal{U}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+
+% Berkeley Colors!!!
+\definecolor{BerkeleyBlue}{HTML}{ccf2ff}
+\definecolor{FoundersRock}{HTML}{ccf2ff}
+\definecolor{CaliforniaGold}{HTML}{ccf2ff}
+\definecolor{Medalist}{HTML}{ccf2ff}
+
+% Theorems
+\tcbuselibrary{skins}
+\tcbuselibrary{breakable}
+
+% Command for wrapping theorem environments in boxes
+\newcommand{\wraptheorem}[3]{%
+    \newenvironment{#1}[1][]{%
+        \begin{tcolorbox}[
+            skin=enhancedmiddle, 
+            frame hidden,
+            colback=#3!20,
+            borderline={1mm}{0mm}{#3}]
+            \ifstrempty{##1}{\begin{#2}}{\begin{#2}[##1]}
+    }
+    {
+            \end{#2}
+        \end{tcolorbox} 
+    }   
+}
+
+% New Theorem Definitions
+\newtheorem{oldthm}{\sffamily Theorem}[section]
+\newtheorem{oldlem}[oldthm]{\sffamily Lemma}
+\newtheorem{oldcor}[oldthm]{\sffamily Corollary}
+\newtheorem{oldprop}[oldthm]{\sffamily Proposition}
+\theoremstyle{definition}
+\newtheorem{olddfn}[oldthm]{\sffamily Definition}
+\newtheorem{oldex}[oldthm]{\sffamily Example}
+\newtheorem{oldexercise}[oldthm]{\sffamily Exercise}
+\newtheorem{oldtodo}{\sffamily TODO}
+\newtheorem{oldalg}[oldthm]{\sffamily Algorithm}
+\newtheorem{oldaxiom}[oldthm]{\sffamily Axiom}
+
+% Problems for HW
+\newtheorem{oldprob}{\sffamily Problem}
+
+
+% Boxed Theorem Definitions
+\wraptheorem{thm}{oldthm}{BerkeleyBlue}
+\wraptheorem{lem}{oldlem}{FoundersRock}
+\wraptheorem{cor}{oldcor}{Medalist}
+\wraptheorem{prop}{oldprop}{Medalist}
+\wraptheorem{dfn}{olddfn}{CaliforniaGold}
+\wraptheorem{ex}{oldex}{CaliforniaGold}
+\wraptheorem{exercise}{oldexercise}{BerkeleyBlue}
+\wraptheorem{oldtodo2}{oldtodo}{black}
+\wraptheorem{prob}{oldprob}{Medalist}
+\wraptheorem{alg}{oldalg}{BerkeleyBlue}
+\wraptheorem{axiom}{oldaxiom}{BerkeleyBlue}
+
+\newcommand{\todo}[1]{\begin{oldtodo2}#1\end{oldtodo2}}
+
+
+\theoremstyle{remark}
+
+% Section Titles
+\let\oldsection\section
+\let\oldsubsection\subsection
+\let\oldsubsubsection\subsubsection
+
+\makeatletter
+\renewcommand\section{\@ifstar\@sec\@@sec}
+\newcommand\@sec[1]{\oldsection*{\sffamily #1}}
+\newcommand\@@sec[1]{\oldsection{\sffamily #1}}
+\renewcommand\subsection{\@ifstar\@subsec\@@subsec}
+\newcommand\@subsec[1]{\oldsubsection*{\sffamily #1}}
+\newcommand\@@subsec[1]{\oldsubsection{\sffamily #1}}
+\renewcommand\subsubsection{\@ifstar\@subsubsec\@@subsubsec}
+\newcommand\@subsubsec[1]{\oldsubsubsection*{\sffamily #1}}
+\newcommand\@@subsubsec[1]{\oldsubsubsection{\sffamily #1}}
+\makeatother
+
+% Title and Author
+\let\oldtitle\title
+\let\oldauthor\author
+
+\renewcommand\title[1]{%
+    \newcommand\thetitle{#1}%
+    \oldtitle{#1}%
+}
+\renewcommand\author[1]{%
+    \newcommand\theauthor{#1}%
+    \oldauthor{#1}%
+}
+
+% Headings
+\newcommand\setfancyhdr{%
+    \pagestyle{fancy}%
+    \fancyhead%
+    \fancyfoot%
+    \lhead{\scshape\thetitle}%
+    \chead{}%
+    \rhead{\scshape\theauthor}%
+    \lfoot{}%
+    \cfoot{\thepage}%
+    \rfoot{}%
+}
+
+\let\oldmaketitle\maketitle
+\renewcommand\maketitle{\sffamily\oldmaketitle\rmfamily}
+
+
+% Category Theory
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Iso}{Iso}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Functor}{Functor}
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\Set}{Set}
+\DeclareMathOperator{\Grp}{Grp}
+\DeclareMathOperator{\Top}{Top}
+\DeclareMathOperator{\Ab}{Ab}
+\DeclareMathOperator{\Ring}{Ring}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Rep}{Rep}
+\newcommand{\op}{\mathrm{op}}
+
+% Math Operators
+\DeclareMathOperator{\boundary}{boundary}
+\DeclareMathOperator{\interior}{interior}
+\DeclareMathOperator{\exterior}{exterior}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\ch}{ch}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\dir}{dir}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\support}{support}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\Uniform}{Uniform} 
+\DeclareMathOperator{\Bernoulli}{Bernoulli}
+\DeclareMathOperator{\Binomial}{Binomial}
+\DeclareMathOperator{\Poisson}{Poisson}
+\DeclareMathOperator{\Geometric}{Geometric}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\trace}{trace}
+
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\fld}{fld}
+
+% Complex Analysis
+\let\Re\relax
+\let\Im\relax
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
+
+
