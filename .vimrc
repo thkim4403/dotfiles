@@ -21,6 +21,6 @@ map <leader>tb :TagbarToggle<return>
 
 let g:gruvbox_italic=1
 
-colorscheme gruvbox
+"colorscheme gruvbox
 
 set cc=80
