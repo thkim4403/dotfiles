@@ -5,10 +5,17 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{fancyhdr}
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{soul}
 \RequirePackage{amsthm}
+\RequirePackage{enumitem}
 \RequirePackage{listings}
 \RequirePackage{courier}
 \RequirePackage{hyperref}
+\RequirePackage[pdftex]{graphicx}
+\RequirePackage{asymptote}
+\RequirePackage{etoolbox}
 \RequirePackage{tcolorbox}
 \RequirePackage{tikz-cd}
 \RequirePackage[ruled, vlined]{algorithm2e}
@@ -52,11 +59,12 @@
 % Command for wrapping theorem environments in boxes
 \newcommand{\wraptheorem}[3]{%
     \newenvironment{#1}[1][]{%
-        \begin{tcolorbox}[
+        \begin{tcolorbox}[breakable, 
             skin=enhancedmiddle, 
             frame hidden,
             colback=#3!20,
-            borderline={1mm}{0mm}{#3}]
+            borderline={1mm}{0mm}{#3},
+            before upper={\parindent15pt}]
             \ifstrempty{##1}{\begin{#2}}{\begin{#2}[##1]}
     }
     {
@@ -99,6 +107,7 @@
 
 
 \theoremstyle{remark}
+\newtheorem*{note}{\sffamily Note}
 
 % Section Titles
 \let\oldsection\section
@@ -205,3 +214,5 @@
 
 % Diff Geo
 \newcommand{\del}[2]{\frac{\partial #1}{\partial #2}}
+
+\newenvironment{enumalpha}{\begin{enumerate}[label=(\alph*)]}{\end{enumerate}}
