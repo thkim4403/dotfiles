@@ -5,10 +5,17 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{fancyhdr}
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{soul}
 \RequirePackage{amsthm}
+\RequirePackage{enumitem}
 \RequirePackage{listings}
 \RequirePackage{courier}
 \RequirePackage{hyperref}
+\RequirePackage[pdftex]{graphicx}
+\RequirePackage{asymptote}
+\RequirePackage{etoolbox}
 \RequirePackage{tcolorbox}
 \RequirePackage{tikz-cd}
 \RequirePackage[ruled, vlined]{algorithm2e}
@@ -39,10 +46,10 @@
 
 
 % Berkeley Colors!!!
-\definecolor{BerkeleyBlue}{HTML}{ccf2ff}
-\definecolor{FoundersRock}{HTML}{ccf2ff}
-\definecolor{CaliforniaGold}{HTML}{ccf2ff}
-\definecolor{Medalist}{HTML}{ccf2ff}
+\definecolor{BerkeleyBlue}{HTML}{003262}
+\definecolor{FoundersRock}{HTML}{3B7EA1}
+\definecolor{CaliforniaGold}{HTML}{FDB515}
+\definecolor{Medalist}{HTML}{C4820E}
 
 % Theorems
 \tcbuselibrary{skins}
@@ -51,11 +58,12 @@
 % Command for wrapping theorem environments in boxes
 \newcommand{\wraptheorem}[3]{%
     \newenvironment{#1}[1][]{%
-        \begin{tcolorbox}[
+        \begin{tcolorbox}[breakable, 
             skin=enhancedmiddle, 
             frame hidden,
             colback=#3!20,
-            borderline={1mm}{0mm}{#3}]
+            borderline={1mm}{0mm}{#3},
+            before upper={\parindent15pt}]
             \ifstrempty{##1}{\begin{#2}}{\begin{#2}[##1]}
     }
     {
@@ -98,6 +106,7 @@
 
 
 \theoremstyle{remark}
+\newtheorem*{note}{\sffamily Note}
 
 % Section Titles
 \let\oldsection\section
@@ -203,3 +212,4 @@
 \DeclareMathOperator{\Im}{Im}
 
 
+\newenvironment{enumalpha}{\begin{enumerate}[label=(\alph*)]}{\end{enumerate}}
