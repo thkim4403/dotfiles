@@ -13,6 +13,7 @@
 \RequirePackage{tikz-cd}
 \RequirePackage[ruled, vlined]{algorithm2e}
 \RequirePackage{float}
+\RequirePackage[margin=1in]{geometry}
 
 % Listings
 \lstset{
@@ -39,10 +40,10 @@
 
 
 % Berkeley Colors!!!
-\definecolor{BerkeleyBlue}{HTML}{ccf2ff}
-\definecolor{FoundersRock}{HTML}{ccf2ff}
-\definecolor{CaliforniaGold}{HTML}{ccf2ff}
-\definecolor{Medalist}{HTML}{ccf2ff}
+\definecolor{BerkeleyBlue}{HTML}{003262}
+\definecolor{FoundersRock}{HTML}{3B7EA1}
+\definecolor{CaliforniaGold}{HTML}{FDB515}
+\definecolor{Medalist}{HTML}{C4820E}
 
 % Theorems
 \tcbuselibrary{skins}
@@ -202,4 +203,5 @@
 \DeclareMathOperator{\Re}{Re}
 \DeclareMathOperator{\Im}{Im}
 
-
+% Diff Geo
+\newcommand{\del}[2]{\frac{\partial #1}{\partial #2}}
